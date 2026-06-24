@@ -3,7 +3,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, Con
 import datetime, json, os, re
 
 # ================= CONFIG =================
-TOKEN = "PASTE_YOUR_TOKEN_HERE"
+TOKEN = "8715623835:AAF51G9i1-c9q61HVW03gSiHy5c-YkgOlXY"
 WARN_LIMIT = 3
 LOG_CHAT_ID = None # Set to your admin log group ID like -1001234567890
 
