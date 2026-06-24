@@ -4,6 +4,12 @@ import datetime, json, os, re
 
 # ================= CONFIG =================
 import os
+async def safe_delete(message):
+    try:
+        await message.delete()
+        return True
+    except:
+        return False
 TOKEN = os.environ.get("TOKEN")
 WARN_LIMIT = 3
 LOG_CHAT_ID = None # Set to your admin log group ID like -1001234567890
@@ -82,7 +88,7 @@ async def welcome_leave(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await context.bot.send_message(chat_id, msg)
 
     if update.message.left_chat_member and settings["delete_leaves"]:
-        await update.message.delete()
+        await safe_delete(update.message)
 
 # ================= ALL ANTI GUARD =================
 async def anti_guard(update: Update, context: ContextTypes.DEFAULT_TYPE):
