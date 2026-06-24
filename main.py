@@ -149,10 +149,10 @@ async def anti_guard(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if len(msg_times.get(user_id, [])) > 1:
         diff = (now - msg_times[user_id][-2]).total_seconds()
         if diff < settings["slowmode"]:
-            await msg.delete()
+            await safe_delete(msg)
 
 async def warn_user(update, context, reason):
-    await update.message.delete()
+    await safe_delete(update.message)
     chat_id = str(update.effective_chat.id)
     user_id = str(update.message.from_user.id)
     name = update.message.from_user.first_name
